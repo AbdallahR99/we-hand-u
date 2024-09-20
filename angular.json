@@ -28,7 +28,13 @@
           "defaultConfiguration": "production",
           "configurations": {
             "development": {
-              "mode": "development"
+              "mode": "development",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             },
             "production": {
               "sourcemap": false,
@@ -39,6 +45,7 @@
         "serve": {
           "builder": "@analogjs/platform:vite-dev-server",
           "defaultConfiguration": "development",
+
           "options": {
             "buildTarget": "we-hand-u:build",
             "port": 5173
