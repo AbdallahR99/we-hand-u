@@ -1,9 +1,17 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "pnpm"
+  },
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
-    "my-app": {
+    "we-hand-u": {
       "projectType": "application",
       "root": ".",
       "sourceRoot": "src",
@@ -32,16 +40,16 @@
           "builder": "@analogjs/platform:vite-dev-server",
           "defaultConfiguration": "development",
           "options": {
-            "buildTarget": "my-app:build",
+            "buildTarget": "we-hand-u:build",
             "port": 5173
           },
           "configurations": {
             "development": {
-              "buildTarget": "my-app:build:development",
+              "buildTarget": "we-hand-u:build:development",
               "hmr": true
             },
             "production": {
-              "buildTarget": "my-app:build:production"
+              "buildTarget": "we-hand-u:build:production"
             }
           }
         },
