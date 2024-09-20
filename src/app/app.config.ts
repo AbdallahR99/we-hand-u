@@ -31,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideFileRouter(),
     provideAnimations(),
+
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'ar',

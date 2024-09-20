@@ -1,3 +1,5 @@
+import { injectBaseURL, injectRequest } from '@analogjs/router/tokens';
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
 @Component({
@@ -11,7 +13,7 @@ import { Component, signal } from '@angular/core';
     </div>
 
     <h2>Analog</h2>
-
+    <!-- {{ request | json }} -->
     <h3>The fullstack meta-framework for Angular!</h3>
 
     <div class="card">
@@ -39,11 +41,14 @@ import { Component, signal } from '@angular/core';
       }
     `,
   ],
+  imports: [CommonModule],
 })
 export default class HomeComponent {
   count = signal(0);
-
+  request = injectBaseURL();
   increment() {
+    console.log(this.request);
+
     this.count.update((count) => count + 1);
   }
 }
