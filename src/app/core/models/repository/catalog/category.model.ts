@@ -6,7 +6,7 @@ export class Category extends BaseSeo {
   public description: string = '';
   public descriptionEn: string = '';
   public iconUrl: string = '';
-  constructor(jsonData: Category) {
+  constructor(jsonData: Partial<Category>) {
     super();
     Object.assign(this, jsonData);
   }

@@ -67,18 +67,18 @@ export default defineConfig(({ mode }) => ({
     viteTsConfigPaths(),
 
     analog({
-      nitro: {
-        preset: 'node-server',
-
-        // rollupConfig: {
-        //   plugins: [
-        //     typescriptPaths({
-        //       tsConfigPath: 'tsconfig.json',
-        //       preserveExtensions: true,
-        //     }) as any,
-        //   ],
-        // },
-      },
+      // ssr: false,
+      // nitro: {
+      //   preset: 'node-server',
+      //   // rollupConfig: {
+      //   //   plugins: [
+      //   //     typescriptPaths({
+      //   //       tsConfigPath: 'tsconfig.json',
+      //   //       preserveExtensions: true,
+      //   //     }) as any,
+      //   //   ],
+      //   // },
+      // },
     }),
     angular({
       inlineStylesExtension: 'scss',

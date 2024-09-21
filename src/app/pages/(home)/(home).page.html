@@ -1,0 +1,76 @@
+<div class="hero min-h-[50vh] max-md:min-h-[70vh]"
+  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
+  <div class="hero-overlay backdrop-brightness-90"></div>
+  <div class="hero-content text-neutral-content text-center">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold drop-shadow text-white">Hello there</h1>
+      <p class="mb-5 drop-shadow text-white">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+        quasi. In deleniti eaque aut repudiandae et a id nisi.
+      </p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>
+
+
+<section class="features -mt-16 max-w-[90vw] m-auto relative z-20">
+  <div class="container m-auto">
+    <div class="flex justify-content-center place-content-center space-between-start max-md:flex-col">
+      @for (feature of [
+      {
+      id: 0,
+      title: "أسعار تنافسية",
+      titleEn: "Competitive Prices",
+      description: "نقدم خدمات عالية الجودة بأسعار معقولة تتناسب مع ميزانية جميع عملائنا.",
+      descriptionEn: "We offer high-quality services at reasonable prices that suit the budget of all our clients.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/best-price-e1724713597779.png"
+      },
+      {
+      id: 1,
+      title: "كفاءة عالية",
+      titleEn: "High Efficiency",
+      description: "فريقنا المدرب يمتلك الخبرة والكفاءة اللازمة لتنفيذ الأعمال بدقة واحترافية.",
+      descriptionEn: "Our trained team has the experience and efficiency needed to carry out work with precision and
+      professionalism.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/efficacy.png"
+      },
+      {
+      id: 2,
+      title: "جودة مضمونة",
+      titleEn: "Guaranteed Quality",
+      description: "نحرص على تقديم خدمات متميزة باستخدام أفضل المواد لضمان رضا عملائنا الكامل.",
+      descriptionEn: "We are committed to providing outstanding services using the best materials to ensure the complete
+      satisfaction of our clients.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/badge.png"
+      }
+      ]; track feature.id) {
+      <div
+        class="feature-box text-center p-3 max-md:first:rounded-t-lg md:first:rounded-s-lg md:last:rounded-e-lg max-md:last:rounded-b-lg odd:bg-primary even:bg-secondary text-white">
+        <img width="48" height="48" [ngSrc]="feature.icon" [alt]="feature.titleEn" class="object-contain m-auto">
+        <h2> {{isEn ? feature.titleEn : feature.title}}</h2>
+        <p>{{isEn ? feature.descriptionEn : feature.description}}</p>
+      </div>
+      }
+
+    </div>
+  </div>
+</section>
+
+<section class="categories mt-8">
+  <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto text-center ">
+    @for (category of categories; track category.id) {
+    <a [routerLink]="[isEn ? '/' + category.slugEn : '/' + category.slug]"
+      class="category-card drop-shadow-sm bg-white shadow-lg hover:shadow-2xl hover:-translate-y-4 hover:cursor-pointer transition-all rounded-lg overflow-hidden">
+      <img [src]="category.iconUrl" [alt]="category.nameEn" class="h-12 object-contain mx-auto mt-3">
+      <div class="p-4">
+        <h2 class="text-2xl font-bold">{{isEn ? category.nameEn : category.name}}</h2>
+        <p class="mt-2 text-gray-600">{{isEn ? category.descriptionEn : category.description}}</p>
+        <a href="#" class="block mt-2 text-sm font-semibold text-primary">{{"View more" | translate}}</a>
+      </div>
+    </a>
+    }
+  </div>
+</section>
+
+<div class="p-4"></div>

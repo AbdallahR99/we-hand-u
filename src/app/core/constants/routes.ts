@@ -1,5 +1,5 @@
 export enum APP_ROUTES {
-  HOME = '/home',
+  HOME = '/',
   LOGIN = '/login',
   CATALOG_LIST = '/services',
   CATALOG_ITEM = '/service',

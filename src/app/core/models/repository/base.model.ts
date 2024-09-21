@@ -56,7 +56,7 @@ export interface ISeoMeta extends IUrlSlug {
   metaImageUrl: string;
 }
 
-export abstract class BaseSeo extends Base implements ISeoMeta {
+export class BaseSeo extends Base implements ISeoMeta {
   // SEO stuff
   public slug: string = '';
   public slugEn: string = '';
@@ -68,7 +68,8 @@ export abstract class BaseSeo extends Base implements ISeoMeta {
   public metaKeywordsEn: string = '';
   public metaImageUrl: string = '';
 
-  constructor() {
+  constructor(data?: Partial<BaseSeo>) {
     super();
+    Object.assign(this, data);
   }
 }

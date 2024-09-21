@@ -31,6 +31,7 @@ export class TranslatorService {
     // }
 
     // this.activatedRoute.snapshot.queryParamMap?.get(GlobalNames.langaugeParam)
+    if (!localStorage) return 'ar';
     return localStorage.getItem(LocalStorageKeys.LANG);
   }
 
@@ -42,7 +43,7 @@ export class TranslatorService {
     this.translate.use(val);
     this.translate.setDefaultLang(val);
     this.translate.currentLang = val;
-    localStorage.setItem('Lang', val);
+    if (localStorage) localStorage.setItem('Lang', val);
     if (val === 'ar') {
       // this.setLangagueQueryParam('ar');
       this.document.documentElement.setAttribute('dir', 'rtl');
@@ -68,7 +69,7 @@ export class TranslatorService {
         .getElementsByTagName('body')[0]
         ?.setAttribute('class', 'ltr');
     }
-    localStorage.setItem(LocalStorageKeys.LANG, val);
+    if (localStorage) localStorage.setItem(LocalStorageKeys.LANG, val);
   }
 
   // setLangagueQueryParam(value: 'ar' | 'en'): void {
@@ -87,5 +88,9 @@ export class TranslatorService {
 
   translateWord(val: string): string {
     return this.translate?.instant(val || '  ');
+  }
+
+  isEn(): boolean {
+    return this.getCurrentLang() === 'en';
   }
 }
