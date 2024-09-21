@@ -1,12 +1,11 @@
 import { Guid } from 'guid-ts';
-import { Base, IUrlSlug } from '../base.model';
+import { BaseSeo } from '../base.model';
 
-export class SubCategory extends Base implements IUrlSlug {
+export class SubCategory extends BaseSeo {
   public name: string = '';
   public nameEn: string = '';
   public description: string = '';
   public descriptionEn: string = '';
-  public slug: string = '';
   public categoryId: Guid = Guid.empty();
   public categoryName: string = '';
   public categoryNameEn: string = '';

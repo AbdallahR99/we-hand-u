@@ -25,8 +25,25 @@ export abstract class Base extends BaseId {
   }
 }
 
+/**
+ * For SEO and Friendly URL
+ * for example:
+ *  slug: النجم-لخدمات-المنازل
+ *  slugEn: al-najm-for-home-services
+ *
+ * Very useful for SEO and Friendly URL
+ */
 export interface IUrlSlug {
   slug: string;
+  slugEn: string;
+}
+
+export abstract class BaseUrlSlug extends Base implements IUrlSlug {
+  public slug: string = '';
+  public slugEn: string = '';
+  constructor() {
+    super();
+  }
 }
 
 export interface ISeoMeta extends IUrlSlug {
@@ -42,6 +59,7 @@ export interface ISeoMeta extends IUrlSlug {
 export abstract class BaseSeo extends Base implements ISeoMeta {
   // SEO stuff
   public slug: string = '';
+  public slugEn: string = '';
   public metaTitle: string = '';
   public metaTitleEn: string = '';
   public metaDescription: string = '';

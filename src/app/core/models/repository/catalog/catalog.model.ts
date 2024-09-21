@@ -1,5 +1,6 @@
 import { Guid } from 'guid-ts';
 import { BaseSeo } from '../base.model';
+import { SubCategory } from './sub-category.model';
 
 export class Catalog extends BaseSeo {
   // catalog details
@@ -15,15 +16,8 @@ export class Catalog extends BaseSeo {
   public vendorRateCount: number = 0;
   public vendorId: Guid = Guid.empty();
 
-  // // category
-  // public categoryId: Guid = Guid.empty();
-  // public categoryName: string = '';
-  // public categoryNameEn: string = '';
-
-  // // subcategoy
-  // public subCategoryId: Guid = Guid.empty();
-  // public subCategoryName: string = '';
-  // public subCategoryNameEn: string = '';
+  // subcategory details (contains the categories)
+  public subCategories: SubCategory[] = [];
 
   // address
   public cityId: Guid = Guid.empty();
@@ -39,6 +33,7 @@ export class Catalog extends BaseSeo {
 
   // contact infos
   public phoneNumber: string[] = [];
+  public email: string = '';
 
   // pricing (Server rendering only, we may need a raw JSON data for client side without js)
   public originalPrice: number = 0;
@@ -49,8 +44,13 @@ export class Catalog extends BaseSeo {
   public currencyName: string = '';
   public currencyNameEn: string = '';
 
+  // pricing details
+  public pricingDetails: string = '';
+
   constructor(jsonData: Catalog) {
     super();
     Object.assign(this, jsonData);
+    this.subCategories =
+      jsonData.subCategories?.map((subCat) => new SubCategory(subCat)) || [];
   }
 }

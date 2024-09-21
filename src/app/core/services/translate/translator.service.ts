@@ -1,5 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { EventEmitter, Inject, Injectable } from '@angular/core';
+import {
+  EventEmitter,
+  inject,
+  Inject,
+  Injectable,
+  InjectionToken,
+} from '@angular/core';
 import { LocalStorageKeys } from '@app/core/constants/local_storage';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 // import { HOST_LANGAUGE } from 'hosts';
@@ -10,9 +16,10 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 export class TranslatorService {
   constructor(
     private translate: TranslateService,
-    @Inject(DOCUMENT) private document: Document
-  ) // @Optional() @Inject(HOST_LANGAUGE) private lang: string,
-  {}
+    @Inject(DOCUMENT) private document: Document // @Optional() @Inject(HOST_LANGAUGE) private lang: string,
+  ) {
+    // super();
+  }
   onLangChange(): EventEmitter<LangChangeEvent> {
     return this.translate.onLangChange;
   }

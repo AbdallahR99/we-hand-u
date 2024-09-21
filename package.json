@@ -53,6 +53,7 @@
     "@angular/cli": "^18.2.5",
     "@angular/compiler-cli": "^18.2.5",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.10",
     "jsdom": "^22.1.0",
     "postcss": "^8.4.47",
     "schematics-scss-migrate": "^2.3.17",

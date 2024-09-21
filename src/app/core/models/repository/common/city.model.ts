@@ -1,6 +1,6 @@
-import { Base } from '../base.model';
+import { BaseUrlSlug } from '../base.model';
 
-export class City extends Base {
+export class City extends BaseUrlSlug {
   public name: string = '';
   public nameEn: string = '';
   public countryId: string = '';

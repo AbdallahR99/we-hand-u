@@ -1,8 +1,10 @@
-import { Base } from '../base.model';
+import { BaseUrlSlug } from '../base.model';
 
-export class Country extends Base {
+export class Country extends BaseUrlSlug {
   public name: string = '';
   public nameEn: string = '';
+  public code: string = '';
+  public flagUrl: string = '';
 
   constructor(jsonData: Country) {
     super();

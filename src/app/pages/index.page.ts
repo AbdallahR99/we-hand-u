@@ -1,54 +1,61 @@
-import { injectBaseURL, injectRequest } from '@analogjs/router/tokens';
-import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { RouteMeta } from '@analogjs/router';
+import { APP_ROUTES, unPrefixRoute } from '@app/core/constants/routes';
 
-@Component({
-  selector: 'app-home',
-  standalone: true,
-  template: `
-    <div>
-      <a href="https://analogjs.org/" target="_blank">
-        <img alt="Analog Logo" class="logo analog" src="/analog.svg" />
-      </a>
-    </div>
+export const routeMeta: RouteMeta = {
+  redirectTo: unPrefixRoute(APP_ROUTES.HOME),
+  pathMatch: 'full',
+};
+// import { injectBaseURL, injectRequest } from '@analogjs/router/tokens';
+// import { CommonModule } from '@angular/common';
+// import { Component, signal } from '@angular/core';
 
-    <h2>Analog</h2>
-    <!-- {{ request | json }} -->
-    <h3>The fullstack meta-framework for Angular!</h3>
+// @Component({
+//   selector: 'app-home',
+//   standalone: true,
+//   template: `
+//     <div>
+//       <a href="https://analogjs.org/" target="_blank">
+//         <img alt="Analog Logo" class="logo analog" src="/analog.svg" />
+//       </a>
+//     </div>
 
-    <div class="card">
-      <button type="button" (click)="increment()">Count {{ count() }}</button>
-    </div>
+//     <h2>Analog</h2>
+//     <!-- {{ request | json }} -->
+//     <h3>The fullstack meta-framework for Angular!</h3>
 
-    <p class="read-the-docs">
-      <a href="https://analogjs.org" target="_blank">Docs</a> |
-      <a href="https://github.com/analogjs/analog" target="_blank">GitHub</a> |
-      <a href="https://github.com/sponsors/brandonroberts" target="_blank"
-        >Sponsor</a
-      >
-    </p>
-  `,
-  styles: [
-    `
-      .logo {
-        will-change: filter;
-      }
-      .logo:hover {
-        filter: drop-shadow(0 0 2em #646cffaa);
-      }
-      .read-the-docs > * {
-        color: #fff;
-      }
-    `,
-  ],
-  imports: [CommonModule],
-})
-export default class HomeComponent {
-  count = signal(0);
-  request = injectBaseURL();
-  increment() {
-    console.log(this.request);
+//     <div class="card">
+//       <button type="button" (click)="increment()">Count {{ count() }}</button>
+//     </div>
 
-    this.count.update((count) => count + 1);
-  }
-}
+//     <p class="read-the-docs">
+//       <a href="https://analogjs.org" target="_blank">Docs</a> |
+//       <a href="https://github.com/analogjs/analog" target="_blank">GitHub</a> |
+//       <a href="https://github.com/sponsors/brandonroberts" target="_blank"
+//         >Sponsor</a
+//       >
+//     </p>
+//   `,
+//   styles: [
+//     `
+//       .logo {
+//         will-change: filter;
+//       }
+//       .logo:hover {
+//         filter: drop-shadow(0 0 2em #646cffaa);
+//       }
+//       .read-the-docs > * {
+//         color: #fff;
+//       }
+//     `,
+//   ],
+//   imports: [CommonModule],
+// })
+// export default class HomeComponent {
+//   count = signal(0);
+//   request = injectBaseURL();
+//   increment() {
+//     console.log(this.request);
+
+//     this.count.update((count) => count + 1);
+//   }
+// }

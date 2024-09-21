@@ -1,11 +1,10 @@
-import { Base, IUrlSlug } from '../base.model';
+import { BaseSeo } from '../base.model';
 
-export class Category extends Base implements IUrlSlug {
+export class Category extends BaseSeo {
   public name: string = '';
   public nameEn: string = '';
   public description: string = '';
   public descriptionEn: string = '';
-  public slug: string = '';
   public iconUrl: string = '';
   constructor(jsonData: Category) {
     super();

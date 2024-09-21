@@ -2,10 +2,11 @@
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import { TranslateLoader } from '@ngx-translate/core';
-import { makeStateKey, StateKey, TransferState } from '@angular/core';
+import { inject, makeStateKey, StateKey, TransferState } from '@angular/core';
 import * as fs from 'fs';
 
 export class TranslateServerLoader implements TranslateLoader {
+  // transferState = inject(TransferState);
   constructor(
     private transferState: TransferState,
     private prefix: string = 'i18n',
@@ -17,14 +18,16 @@ export class TranslateServerLoader implements TranslateLoader {
       const assets_folder = join(
         process.cwd(),
         'dist',
-        'GettingStarted', // Your project name here
-        'browser',
-        'assets',
+        'ssr', // Your project name here
+        // 'i18n',
+        // 'assets',
         this.prefix
       );
-
+      // const jsonData = JSON.parse(
+      //   fs.readFileSync(`./${lang}${this.suffix}`, 'utf8')
+      // );
       const jsonData = JSON.parse(
-        fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8')
+        fs.readFileSync(`${assets_folder}\\${lang}${this.suffix}`, 'utf8')
       );
 
       // Here we save the translations in the transfer-state
@@ -40,5 +43,7 @@ export class TranslateServerLoader implements TranslateLoader {
 }
 
 export function translateServerLoaderFactory(transferState: TransferState) {
+  transferState = inject(TransferState);
+
   return new TranslateServerLoader(transferState);
 }
