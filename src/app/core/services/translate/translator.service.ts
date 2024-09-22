@@ -29,10 +29,10 @@ export class TranslatorService {
     // if (isServer) {
     //   return this.lang;
     // }
-
     // this.activatedRoute.snapshot.queryParamMap?.get(GlobalNames.langaugeParam)
-    if (!localStorage) return 'ar';
-    return localStorage.getItem(LocalStorageKeys.LANG);
+    // if (!localStorage) return 'ar';
+    // return localStorage.getItem(LocalStorageKeys.LANG);
+    return 'en';
   }
 
   setCurrentLang(val: string): void {
@@ -43,7 +43,7 @@ export class TranslatorService {
     this.translate.use(val);
     this.translate.setDefaultLang(val);
     this.translate.currentLang = val;
-    if (localStorage) localStorage.setItem('Lang', val);
+    // if (localStorage) localStorage.setItem('Lang', val);
     if (val === 'ar') {
       // this.setLangagueQueryParam('ar');
       this.document.documentElement.setAttribute('dir', 'rtl');
@@ -69,7 +69,7 @@ export class TranslatorService {
         .getElementsByTagName('body')[0]
         ?.setAttribute('class', 'ltr');
     }
-    if (localStorage) localStorage.setItem(LocalStorageKeys.LANG, val);
+    // if (localStorage) localStorage.setItem(LocalStorageKeys.LANG, val);
   }
 
   // setLangagueQueryParam(value: 'ar' | 'en'): void {
