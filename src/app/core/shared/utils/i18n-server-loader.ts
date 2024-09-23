@@ -17,8 +17,8 @@ export class TranslateServerLoader implements TranslateLoader {
     return new Observable((observer) => {
       const assets_folder = join(
         process.cwd(),
-        'dist',
-        'ssr', // Your project name here
+        'public',
+        // 'ssr', // Your project name here
         // 'i18n',
         // 'assets',
         this.prefix,

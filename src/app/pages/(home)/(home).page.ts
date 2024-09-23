@@ -10,9 +10,9 @@ import { Guid } from 'guid-ts';
   standalone: true,
   imports: [SHARED_MODULES],
   templateUrl: './(home).page.html',
-  host: {
-    ngSkipHydration: '',
-  },
+  // host: {
+  //   ngSkipHydration: '',
+  // },
 })
 export default class HomePage {
   translatorService = inject(TranslatorService);
