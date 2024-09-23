@@ -9,36 +9,6 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // vite: {
-  //   css: {
-  //     preprocessorOptions: {
-  //       scss: {
-  //         includePaths: [
-  //           resolve(__dirname, 'src/assets/styles'),
-  //           '@assets/styles',
-  //         ],
-  //       },
-  //     },
-  //   },
-  // },
-  // css: {
-  //   preprocessorOptions: {
-  //     includePaths: [resolve(__dirname, 'src/assets/styles'), '@assets/styles'],
-  //     css: {
-  //       includePaths: [
-  //         resolve(__dirname, 'src/assets/styles'),
-  //         '@assets/styles',
-  //       ],
-  //     },
-  //     scss: {
-  //       api: 'modern-compiler', // or "modern",
-  //       includePaths: [
-  //         resolve(__dirname, 'src/assets/styles'),
-  //         '@assets/styles',
-  //       ],
-  //     },
-  //   },
-  // },
 
   css: {
     preprocessorOptions: {
