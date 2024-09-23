@@ -67,7 +67,7 @@ export default defineConfig(({ mode }) => ({
     viteTsConfigPaths(),
 
     analog({
-      // ssr: false,
+      ssr: false,
       // nitro: {
       //   preset: 'node-server',
       //   // rollupConfig: {

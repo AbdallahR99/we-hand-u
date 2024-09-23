@@ -60,17 +60,15 @@
 <section class="categories mt-8">
   <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto text-center ">
     @for (category of categories; track category.id) {
-    <a [routerLink]="[isEn ? '/' + category.slugEn : '/' + category.slug]">
-      <div
-        class="category-card drop-shadow-sm bg-white shadow-lg hover:shadow-2xl h-full hover:-translate-y-4 hover:cursor-pointer transition-all rounded-lg overflow-hidden">
+      <a [routerLink]="[isEn ? '/' + category.slugEn : '/' + category.slug]"
+        class="category-card drop-shadow-sm bg-white shadow-lg hover:shadow-2xl hover:-translate-y-4 hover:cursor-pointer transition-all rounded-lg overflow-hidden">
         <img [src]="category.iconUrl" [alt]="category.nameEn" class="h-12 object-contain mx-auto mt-3">
         <div class="p-4">
           <h2 class="text-2xl font-bold">{{isEn ? category.nameEn : category.name}}</h2>
           <p class="mt-2 text-gray-600">{{isEn ? category.descriptionEn : category.description}}</p>
           <a href="#" class="block mt-2 text-sm font-semibold text-primary">{{"View more" | translate}}</a>
         </div>
-      </div>
-    </a>
+      </a>
     }
   </div>
 </section>
