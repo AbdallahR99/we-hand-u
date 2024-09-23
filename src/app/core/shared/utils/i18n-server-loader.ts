@@ -21,14 +21,13 @@ export class TranslateServerLoader implements TranslateLoader {
         'ssr', // Your project name here
         // 'i18n',
         // 'assets',
-        this.prefix
+        this.prefix,
+        `${lang}${this.suffix}`
       );
       // const jsonData = JSON.parse(
       //   fs.readFileSync(`./${lang}${this.suffix}`, 'utf8')
       // );
-      const jsonData = JSON.parse(
-        fs.readFileSync(`${assets_folder}\\${lang}${this.suffix}`, 'utf8')
-      );
+      const jsonData = JSON.parse(fs.readFileSync(assets_folder, 'utf8'));
 
       // Here we save the translations in the transfer-state
       const key: StateKey<number> = makeStateKey<number>(
