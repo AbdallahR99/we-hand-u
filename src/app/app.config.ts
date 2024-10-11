@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([requestContextInterceptor])
     ),
-    provideClientHydration(withI18nSupport()),
+    // provideClientHydration(withI18nSupport()),
     provideContent(withMarkdownRenderer()),
   ],
 };

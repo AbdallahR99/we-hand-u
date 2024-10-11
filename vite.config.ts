@@ -9,46 +9,24 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // vite: {
-  //   css: {
-  //     preprocessorOptions: {
-  //       scss: {
-  //         includePaths: [
-  //           resolve(__dirname, 'src/assets/styles'),
-  //           '@assets/styles',
-  //         ],
-  //       },
-  //     },
-  //   },
-  // },
-  // css: {
-  //   preprocessorOptions: {
-  //     includePaths: [resolve(__dirname, 'src/assets/styles'), '@assets/styles'],
-  //     css: {
-  //       includePaths: [
-  //         resolve(__dirname, 'src/assets/styles'),
-  //         '@assets/styles',
-  //       ],
-  //     },
-  //     scss: {
-  //       api: 'modern-compiler', // or "modern",
-  //       includePaths: [
-  //         resolve(__dirname, 'src/assets/styles'),
-  //         '@assets/styles',
-  //       ],
-  //     },
-  //   },
-  // },
-
   css: {
     preprocessorOptions: {
       scss: {
-        // api: 'modern-compiler', // or "modern",
         includePaths: ['src/assets/styles'],
       },
     },
   },
+  force: true,
+  server: {
+    force: true,
+    fs: {
+      cachedChecks: false,
+    },
+  },
   build: {
+    ssr: false,
+    force: true,
+
     target: ['es2020'],
   },
   resolve: {
@@ -67,18 +45,7 @@ export default defineConfig(({ mode }) => ({
     viteTsConfigPaths(),
 
     analog({
-      // ssr: false,
-      // nitro: {
-      //   preset: 'node-server',
-      //   // rollupConfig: {
-      //   //   plugins: [
-      //   //     typescriptPaths({
-      //   //       tsConfigPath: 'tsconfig.json',
-      //   //       preserveExtensions: true,
-      //   //     }) as any,
-      //   //   ],
-      //   // },
-      // },
+      ssr: false,
     }),
     angular({
       inlineStylesExtension: 'scss',

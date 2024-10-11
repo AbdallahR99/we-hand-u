@@ -1,22 +1,22 @@
-<div class="hero min-h-[50vh] max-md:min-h-[70vh]"
-  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
-  <div class="hero-overlay backdrop-brightness-90"></div>
-  <div class="hero-content text-neutral-content text-center">
+<div class="hero md:py-40 max-md:pb-9 max-md:px-2 max-md:pt-32" style="background-image: linear-gradient(83deg, #022D3EAD 0%, #022D3EAD 58%), url(https://baytalnakhla.com/wp-content/uploads/2024/08/hero.jpg);background-position: 50%;background-size: cover;
+ background-repeat: no-repeat;">
+  <!-- <div class="hero-overlay"></div> -->
+  <div class="hero-content text-white text-center">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold drop-shadow text-white">Hello there</h1>
       <p class="mb-5 drop-shadow text-white">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
         quasi. In deleniti eaque aut repudiandae et a id nisi.
       </p>
-      <button class="btn btn-primary">Get Started</button>
+      <button class="btn btn-primary text-white">Get Started</button>
     </div>
   </div>
 </div>
 
 
-<section class="features -mt-16 max-w-[90vw] m-auto relative z-20">
+<section class="features drop-shadow-lg -mt-16 max-w-[90vw] m-auto relative z-20">
   <div class="container m-auto">
-    <div class="flex justify-content-center place-content-center space-between-start max-md:flex-col">
+    <div class="grid justify-content-center place-content-center space-between-start md:grid-flow-col">
       @for (feature of [
       {
       id: 0,
@@ -46,9 +46,11 @@
       }
       ]; track feature.id) {
       <div
-        class="feature-box text-center p-3 max-md:first:rounded-t-lg md:first:rounded-s-lg md:last:rounded-e-lg max-md:last:rounded-b-lg odd:bg-primary even:bg-secondary text-white">
+        class="feature-box text-center p-3 max-md:first:rounded-t-lg md:first:rounded-s-lg md:last:rounded-e-lg max-md:last:rounded-b-lg odd:bg-primary even:bg-secondary odd:text-secondary even:text-primary">
         <img width="48" height="48" [ngSrc]="feature.icon" [alt]="feature.titleEn" class="object-contain m-auto">
-        <h2> {{isEn ? feature.titleEn : feature.title}}</h2>
+        <div class="py-1"></div>
+        <h2 class="text-xl font-bold"> {{isEn ? feature.titleEn : feature.title}}</h2>
+        <div class="py-1"></div>
         <p>{{isEn ? feature.descriptionEn : feature.description}}</p>
       </div>
       }
@@ -57,7 +59,7 @@
   </div>
 </section>
 
-<section class="categories mt-8">
+<section class="categories mt-8 max-md:mx-4">
   <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto text-center ">
     @for (category of categories; track category.id) {
     <a [routerLink]="[isEn ? '/' + category.slugEn : '/' + category.slug]">
@@ -67,7 +69,7 @@
         <div class="p-4">
           <h2 class="text-2xl font-bold">{{isEn ? category.nameEn : category.name}}</h2>
           <p class="mt-2 text-gray-600">{{isEn ? category.descriptionEn : category.description}}</p>
-          <a href="#" class="block mt-2 text-sm font-semibold text-primary">{{"View more" | translate}}</a>
+          <span class="block mt-2 text-sm font-semibold text-primary hover:underline">{{"View more" | translate}}</span>
         </div>
       </div>
     </a>
