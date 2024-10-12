@@ -2,12 +2,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-// @layer components {
+@layer components {
 
-//   .btn-main {
-//     @apply sm:text-base flex justify-center items-center text-sm font-medium rounded-[10px] sm:px-11 px-5  py-[10px] cursor-pointer;
-//   }
+  .btn-main {
+    @apply sm:text-base flex justify-center items-center text-sm font-medium rounded-[10px] sm:px-11 px-5  py-[10px] cursor-pointer;
+  }
+  .catalog-page {
+    h1 {
+      @apply text-4xl font-bold;
+    }
+    h2 {
+      @apply text-3xl font-bold;
+    }
+    h3 {
+      @apply text-2xl font-bold;
+    }
+    h4 {
+      @apply text-xl font-bold;
+    }
+    h5 {
+      @apply text-lg font-bold;
+    }
+    h6 {
+      @apply text-base font-bold;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      @apply mt-8 mb-4;
+    }
+    p {
+      @apply text-lg font-normal;
+    }
+    img {
+      @apply w-full h-[300px] object-contain;
+    }
+    ul {
+      @apply list-disc list-inside;
+    }
+    li {
+      @apply text-lg font-normal;
+    }
+    ol {
+      @apply list-decimal list-inside;
+    }
+    a {
+      @apply text-lg font-normal text-blue-500;
+    }
+    blockquote {
+      @apply text-lg font-normal border-l-4 border-blue-500 pl-4;
+    }
+    a:hover {
+      @apply text-blue-700;
+    }
 
+
+  }
+
+}
 // @media (prefers-color-scheme: dark) {
 //   :root {
 //     color: #213547;

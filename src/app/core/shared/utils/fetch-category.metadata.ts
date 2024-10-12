@@ -19,7 +19,7 @@ export const categoriesSlugs: {
 function fetchCategory(
   route: ActivatedRouteSnapshot
 ): { category?: Category; lang?: string } | undefined {
-  const categorySlug = route.params['catalog'] as string;
+  const categorySlug = route.params['slug'] as string;
   if (!categorySlug) return undefined;
   if (categoriesSlugs[categorySlug] === null) return undefined;
   if (categoriesSlugs[categorySlug])

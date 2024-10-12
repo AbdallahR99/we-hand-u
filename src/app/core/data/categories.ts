@@ -236,3 +236,29 @@ export const CATEGORIES: Category[] = (
     },
   ] as Partial<Category>[]
 ).map((category) => new Category(category));
+
+// const slugs = [
+//   'خدمات-المسابح',
+//   'خدمات-الحدائق',
+//   'تركيب-باركيه',
+//   'تركيب-جبس-بورد',
+//   'تركيب-طارد-حمام',
+//   'تسليك-المجاري',
+//   'تنظيف-المنازل',
+//   'تنظيف-وصيانة-مكيفات',
+//   'جلي-وتلميع-الرخام',
+//   'خدمات-الصبغ'
+// ];
+
+// const slugsEn = [
+//   'swimming-pool-services',
+//   'garden-services',
+//   'parquet-installation',
+//   'gypsum-board-installation',
+//   'pigeon-repellent-installation',
+//   'sewer-cleaning',
+//   'house-cleaning',
+//   'ac-cleaning-maintenance',
+//   'marble-polishing',
+//   'painting-services'
+// ];

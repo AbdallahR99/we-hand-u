@@ -21,7 +21,10 @@ import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { translateBrowserLoaderFactory } from './core/shared/utils/i18n-browser-loader';
-import { withComponentInputBinding } from '@angular/router';
+import {
+  withComponentInputBinding,
+  withNavigationErrorHandler,
+} from '@angular/router';
 
 export function tokenGetter() {
   // if (!localStorage) return null;
@@ -34,9 +37,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideFileRouter(),
+    // provideFileRouter(withComponentInputBinding()),
     provideAnimations(),
-    provideFileRouter(withComponentInputBinding()),
+    provideFileRouter(
+      withComponentInputBinding(),
+      withNavigationErrorHandler(console.error)
+    ),
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'ar',

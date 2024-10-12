@@ -2,6 +2,7 @@ export enum APP_ROUTES {
   HOME = '/',
   LOGIN = '/login',
   CATALOG_LIST = '/services',
+  CATALOG_LIST_AR = '/الخدمات',
   CATALOG_ITEM = '/service',
   BLOG = '/blog',
   BLOG_ITEM = '/post',

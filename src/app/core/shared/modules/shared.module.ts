@@ -1,4 +1,10 @@
-import { NgOptimizedImage, NgStyle } from '@angular/common';
+import {
+  AsyncPipe,
+  NgFor,
+  NgIf,
+  NgOptimizedImage,
+  NgStyle,
+} from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -7,4 +13,7 @@ export const SHARED_MODULES = [
   RouterLink,
   NgStyle,
   NgOptimizedImage,
+  NgFor,
+  NgIf,
+  AsyncPipe,
 ];

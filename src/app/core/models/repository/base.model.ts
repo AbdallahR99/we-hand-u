@@ -59,12 +59,14 @@ export interface ISeoMeta extends IUrlSlug {
 export class BaseSeo extends Base implements ISeoMeta {
   // SEO stuff
   public slug: string = '';
+  public slugAr: string = '';
   public slugEn: string = '';
   public metaTitle: string = '';
   public metaTitleEn: string = '';
   public metaDescription: string = '';
   public metaDescriptionEn: string = '';
   public metaKeywords: string = '';
+  public metaKeywordsAr: string = '';
   public metaKeywordsEn: string = '';
   public metaImageUrl: string = '';
 

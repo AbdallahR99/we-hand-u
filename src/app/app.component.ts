@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FlowbiteService } from './core/services/theme/flowbite.service';
 import { LayoutComponent } from './core/shared/components/layout/layout.component';
+import { TranslatorService } from './core/services/translate/translator.service';
 // import { FacadeService } from './core/services/facade-service.service';
 
 @Component({
@@ -29,7 +30,9 @@ import { LayoutComponent } from './core/shared/components/layout/layout.componen
 })
 export class AppComponent implements OnInit {
   flowbiteService = inject(FlowbiteService);
+  translatorService = inject(TranslatorService);
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite();
+    this.translatorService.setCurrentLang('ar');
   }
 }

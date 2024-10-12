@@ -1,0 +1,98 @@
+<div class="hero md:py-40 max-md:pb-9 max-md:px-2 max-md:pt-32" style="background-image: linear-gradient(83deg, #022D3EAD 0%, #022D3EAD 58%), url(https://baytalnakhla.com/wp-content/uploads/2024/08/hero.jpg);background-position: 50%;background-size: cover;
+ background-repeat: no-repeat;">
+  <!-- <div class="hero-overlay"></div> -->
+  <div class="hero-content text-white text-center">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold drop-shadow text-white">
+        {{
+        !isEn ? "شركة WeHandU للخدمات المنزلية بالإمارات" : "WeHandU Home Services Company in UAE"
+        }}
+      </h1>
+      <p class="mb-5 drop-shadow text-white">
+        @if (!isEn) {
+        تقدم شركة WeHandU في الإمارات خدمات تنظيف المسابح للمنازل والشركات، ويتم استخدام مواد تنظيف ذات جودة عالية
+        وآمنة للبيئة لضمان نظافة المسبح بشكل كامل، وتتضمن خدمات التنظيف تنظيف الحوض والأرضية والجدران والسلالم والمرشات
+        والفلاتر والأنابيب، ويتم التأكد من تنظيف جميع الزوايا وإزالة أي بقايا أو رواسب، وكما يمكن للمتخصصين في التنظيف
+        القيام بمعالجة المياه وضبط مستوى الكلور والحموضة بشكل دوري، وقد يتم تقديم خدمات إضافية مثل الترميم والتجديد
+        للمسابح المتهالكة، وتتوفر خدمات تنظيف المسابح بأسعار معقولة وبما يتناسب مع احتياجات العملاء.
+        } @else {
+        WeHandU in UAE offers pool cleaning services for homes and companies, using high-quality and environmentally
+        safe cleaning materials to ensure the pool is completely clean. The cleaning services include cleaning the pool,
+        floor, walls, stairs, nozzles, filters, and pipes, ensuring that all corners are cleaned and any residues or
+        deposits are removed. Specialists in cleaning can also treat water and adjust the chlorine and acidity levels
+        regularly. Additional services such as restoration and renovation of dilapidated pools are available. Pool
+        cleaning services are available at reasonable prices that suit the needs of customers.
+        }
+      </p>
+      <button class="btn btn-primary text-white">{{"Contact Us" | translate}}</button>
+    </div>
+  </div>
+</div>
+
+
+<section class="features drop-shadow-lg -mt-16 max-w-[90vw] m-auto relative z-20">
+  <div class="container m-auto">
+    <div class="grid justify-content-center place-content-center space-between-start md:grid-flow-col">
+      @for (feature of [
+      {
+      id: 0,
+      title: "أسعار تنافسية",
+      titleEn: "Competitive Prices",
+      description: "نقدم خدمات عالية الجودة بأسعار معقولة تتناسب مع ميزانية جميع عملائنا.",
+      descriptionEn: "We offer high-quality services at reasonable prices that suit the budget of all our clients.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/best-price-e1724713597779.png"
+      },
+      {
+      id: 1,
+      title: "كفاءة عالية",
+      titleEn: "High Efficiency",
+      description: "فريقنا المدرب يمتلك الخبرة والكفاءة اللازمة لتنفيذ الأعمال بدقة واحترافية.",
+      descriptionEn: "Our trained team has the experience and efficiency needed" +
+      " to carry out work with precision and professionalism.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/efficacy.png"
+      },
+      {
+      id: 2,
+      title: "جودة مضمونة",
+      titleEn: "Guaranteed Quality",
+      description: "نحرص على تقديم خدمات متميزة باستخدام أفضل المواد لضمان رضا عملائنا الكامل.",
+      descriptionEn: "We are committed to providing outstanding services using " +
+      "the best materials to ensure the complete satisfaction of our clients.",
+      icon: "https://baytalnakhla.com/wp-content/uploads/2024/08/badge.png"
+      }
+      ]; track feature.id) {
+      <div
+        class="feature-box text-center p-3 max-md:first:rounded-t-lg md:first:rounded-s-lg md:last:rounded-e-lg max-md:last:rounded-b-lg odd:bg-primary even:bg-secondary odd:text-secondary even:text-primary">
+        <img width="48" height="48" [ngSrc]="feature.icon" [alt]="feature.titleEn" class="object-contain m-auto">
+        <div class="py-1"></div>
+        <h2 class="text-xl font-bold"> {{isEn ? feature.titleEn : feature.title}}</h2>
+        <div class="py-1"></div>
+        <p>{{isEn ? feature.descriptionEn : feature.description}}</p>
+      </div>
+      }
+
+    </div>
+  </div>
+</section>
+
+<section class="categories mt-8 max-md:mx-4">
+  <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto text-center ">
+    @for (category of categories; track category.attributes.id) {
+    <a [routerLink]="[isEn ? '/' + category.attributes.slugEn : '/' + category.attributes.slugAr]">
+      <div
+        class="category-card drop-shadow-sm bg-white shadow-lg hover:shadow-2xl h-full hover:-translate-y-4 hover:cursor-pointer transition-all rounded-lg overflow-hidden">
+        <img [src]="category.attributes.iconUrl" [alt]="category.attributes.nameEn"
+          class="h-12 object-contain mx-auto mt-3">
+        <div class="p-4">
+          <h2 class="text-2xl font-bold">{{isEn ? category.attributes.titleEn : category.attributes.titleAr}}</h2>
+          <p class="mt-2 text-gray-600">{{isEn ? category.attributes.descriptionEn : category.attributes.descriptionAr}}
+          </p>
+          <span class="block mt-2 text-sm font-semibold text-primary hover:underline">{{"View more" | translate}}</span>
+        </div>
+      </div>
+    </a>
+    }
+  </div>
+</section>
+
+<div class="p-4"></div>

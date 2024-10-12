@@ -14,6 +14,9 @@ import { BaseSeo } from '@app/core/models/repository/base.model';
 import { Category } from '@app/core/models/repository/catalog/category.model';
 import { APP_ROUTES } from '@app/core/constants/routes';
 import { catalogRouteMeta } from '@app/core/shared/utils/fetch-category.metadata';
+import { SHARED_MODULES } from '@app/core/shared/modules/shared.module';
+import { injectContentFiles, MarkdownComponent } from '@analogjs/content';
+import { ServiceAttributes } from '@app/core/models/attributes/service.attributes';
 
 export const routeMeta: RouteMeta = {
   // title: 'TEsseest',
@@ -22,15 +25,31 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [SHARED_MODULES, MarkdownComponent],
   template: ` <p>catalog page works!!</p>
-    <p>category name {{ category?.name }}</p>`,
+    <ul>
+      <li *ngFor="let post of posts">
+        <a [routerLink]="['./', post.slug]">{{ post.attributes.title }}</a>
+      </li>
+    </ul>
+    <p>category name {{ catalog }}</p>`,
 })
 export default class CatalogPage {
-  @Input() category?: Category;
-  activatedRoute = inject(ActivatedRoute);
+  routes = APP_ROUTES;
+  route = inject(ActivatedRoute);
+  @Input() catalog?: string;
 
+  // @Input() category?: Category;
+  activatedRoute = inject(ActivatedRoute);
+  readonly posts = injectContentFiles<ServiceAttributes>(
+    (contentFile) =>
+      // contentFile.filename.includes('/src/content/blog/')
+      contentFile.attributes.categorySlug ===
+      (this.route.snapshot.params['catalog'] as string)
+  );
   constructor() {
+    console.log(this.posts);
+    console.log(this.catalog);
     console.log(this.activatedRoute, 'activatedRoute');
   }
 }

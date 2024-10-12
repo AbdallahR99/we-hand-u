@@ -32,7 +32,7 @@ export class TranslatorService {
     // this.activatedRoute.snapshot.queryParamMap?.get(GlobalNames.langaugeParam)
     // if (!localStorage) return 'ar';
     // return localStorage.getItem(LocalStorageKeys.LANG);
-    return 'en';
+    return 'ar';
   }
 
   setCurrentLang(val: string): void {
