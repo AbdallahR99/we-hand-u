@@ -4,6 +4,7 @@ import {
   NgIf,
   NgOptimizedImage,
   NgStyle,
+  TitleCasePipe,
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,4 +17,5 @@ export const SHARED_MODULES = [
   NgFor,
   NgIf,
   AsyncPipe,
+  TitleCasePipe,
 ];
