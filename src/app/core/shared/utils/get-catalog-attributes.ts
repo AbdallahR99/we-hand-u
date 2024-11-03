@@ -6,6 +6,7 @@ export let catalogAttributes: Category | undefined;
 export function injectActiveCatalogAttributes(
   route: ActivatedRouteSnapshot
 ): Category {
+  // debugger;
   if (catalogAttributes) {
     if (catalogAttributes.slug === route.params['slug']) {
       return catalogAttributes;

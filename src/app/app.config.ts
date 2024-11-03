@@ -25,14 +25,15 @@ import {
   withComponentInputBinding,
   withNavigationErrorHandler,
 } from '@angular/router';
+import { provideClientTranslatorModule } from '@core/shared/modules/translator/translator.module';
 
-export function tokenGetter() {
-  // if (!localStorage) return null;
-  // return localStorage.getItem(LocalStorageKeys.TOKEN);
-}
-export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './i18n/', '.json');
-}
+// export function tokenGetter() {
+//   // if (!localStorage) return null;
+//   // return localStorage.getItem(LocalStorageKeys.TOKEN);
+// }
+// export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+//   return new TranslateHttpLoader(http, './i18n/', '.json');
+// }
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -43,19 +44,7 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withNavigationErrorHandler(console.error)
     ),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        defaultLanguage: 'ar',
-        loader: {
-          provide: TranslateLoader,
-
-          // useFactory: translateBrowserLoaderFactory,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient, TransferState],
-          // deps: [HttpClient],
-        },
-      })
-    ),
+    provideClientTranslatorModule(),
     provideHttpClient(
       withFetch(),
       withInterceptors([requestContextInterceptor])

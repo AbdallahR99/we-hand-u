@@ -16,18 +16,19 @@ import { TranslatorService } from '@app/core/services/translate/translator.servi
 export const categoriesSlugs: {
   [key: string]: { category?: Category; lang?: string } | null;
 } = {};
-function fetchCategory(
+export function fetchCategory(
   route: ActivatedRouteSnapshot
 ): { category?: Category; lang?: string } | undefined {
+  debugger;
   const categorySlug = route.params['slug'] as string;
   if (!categorySlug) return undefined;
-  if (categoriesSlugs[categorySlug] === null) return undefined;
+  // if (categoriesSlugs[categorySlug] === null) return undefined;
   if (categoriesSlugs[categorySlug])
     return categoriesSlugs[categorySlug] as {
       category?: Category;
       lang?: string;
     };
-
+  debugger;
   const translatorService = inject(TranslatorService);
   if (!translatorService.getCurrentLang()) {
     translatorService.setCurrentLang('ar');
@@ -91,7 +92,7 @@ function fetchCategory(
 //   // providers: [AboutService],
 // };
 
-const SERVICE_META = new BaseSeo({
+export const SERVICE_META = new BaseSeo({
   metaTitle: 'الخدمات',
   metaTitleEn: 'Services',
   metaDescription: 'الخدمات',
@@ -104,6 +105,7 @@ const SERVICE_META = new BaseSeo({
 });
 
 export const catalogRouteMeta: ResolveFn<MetaTag[]> = (route) => {
+  // debugger;
   const data = fetchCategory(route);
   const router = inject(Router);
   const metaTitle = inject(Title);

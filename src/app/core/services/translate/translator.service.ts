@@ -1,3 +1,4 @@
+import { PlatformService } from './../platform/platform.service';
 import { DOCUMENT } from '@angular/common';
 import {
   EventEmitter,
@@ -6,6 +7,7 @@ import {
   Injectable,
   InjectionToken,
 } from '@angular/core';
+import { APP_SETTINGS } from '@app/core/constants/app-settings.constants';
 import { LocalStorageKeys } from '@app/core/constants/local_storage';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 // import { HOST_LANGAUGE } from 'hosts';
@@ -14,6 +16,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class TranslatorService {
+  PlatformService = inject(PlatformService);
   constructor(
     private translate: TranslateService,
     @Inject(DOCUMENT) private document: Document // @Optional() @Inject(HOST_LANGAUGE) private lang: string,
@@ -25,14 +28,16 @@ export class TranslatorService {
   }
   langOb = this.translate.onLangChange.asObservable();
   getCurrentLang(): string | null {
+    const isServer = this.PlatformService.isServer;
+
     // const isServer = isPlatformServer(this.platformId);
-    // if (isServer) {
-    //   return this.lang;
-    // }
+    if (isServer || !localStorage) {
+      return APP_SETTINGS.defaultLanguage;
+    }
     // this.activatedRoute.snapshot.queryParamMap?.get(GlobalNames.langaugeParam)
     // if (!localStorage) return 'ar';
-    // return localStorage.getItem(LocalStorageKeys.LANG);
-    return 'ar';
+    return localStorage.getItem(LocalStorageKeys.LANG);
+    // return 'ar';
   }
 
   setCurrentLang(val: string): void {
@@ -48,7 +53,9 @@ export class TranslatorService {
       // this.setLangagueQueryParam('ar');
       this.document.documentElement.setAttribute('dir', 'rtl');
       this.document.documentElement.lang = 'ar';
-      this.document.getElementsByTagName('html')[0]?.setAttribute('lang', 'ar');
+      this.document
+        .getElementsByTagName('html')[0]
+        ?.setAttribute(LocalStorageKeys.LANG, 'ar');
       this.document.getElementsByTagName('html')[0]?.setAttribute('dir', 'rtl');
       this.document.getElementsByTagName('body')[0]?.setAttribute('dir', 'rtl');
       this.document
@@ -59,7 +66,9 @@ export class TranslatorService {
       // this.setLangagueQueryParam('en');
       this.document.documentElement.setAttribute('dir', 'ltr');
       this.document.documentElement.lang = 'en';
-      this.document.getElementsByTagName('html')[0]?.setAttribute('lang', 'en');
+      this.document
+        .getElementsByTagName('html')[0]
+        ?.setAttribute(LocalStorageKeys.LANG, 'en');
       this.document.getElementsByTagName('html')[0]?.removeAttribute('dir');
       this.document.getElementsByTagName('body')[0]?.removeAttribute('dir');
       this.document.getElementsByTagName('body')[0]?.removeAttribute('class');

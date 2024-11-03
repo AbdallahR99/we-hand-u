@@ -10,22 +10,10 @@ import { appConfig } from './app.config';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './core/shared/utils/i18n-server-loader';
 import { HttpClient } from '@angular/common/http';
+import { provideServerTranslatorModule } from '@core/shared/modules/translator/translator-server.module';
 
 const serverConfig: ApplicationConfig = {
-  providers: [
-    provideServerRendering(),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        defaultLanguage: 'ar',
-        loader: {
-          provide: TranslateLoader,
-          useFactory: translateServerLoaderFactory,
-          deps: [HttpClient, TransferState],
-          // deps: [HttpClient],
-        },
-      })
-    ),
-  ],
+  providers: [provideServerRendering(), provideServerTranslatorModule()],
 };
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);

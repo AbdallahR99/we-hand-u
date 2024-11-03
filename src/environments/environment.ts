@@ -1,1 +1,5 @@
-export const environment = {};
+import { environmentCommon } from './environment.common';
+
+export const environment = {
+  ...environmentCommon,
+};

@@ -4,7 +4,13 @@ import { RouterLink } from '@angular/router';
 import { APP_ROUTES, unPrefixRoute } from '@app/core/constants/routes';
 import { SHARED_MODULES } from '@app/core/shared/modules/shared.module';
 
-export const routeMeta: RouteMeta = {
-  redirectTo: unPrefixRoute(APP_ROUTES.NOT_FOUND),
-  pathMatch: 'full',
-};
+@Component({
+  standalone: true,
+  imports: [SHARED_MODULES],
+  template: `
+    <h2>Page Not Found</h2>
+
+    <a routerLink="/">Go Back Home</a>
+  `,
+})
+export default class PageNotFoundComponent {}

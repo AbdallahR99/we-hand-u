@@ -6,13 +6,14 @@ import angular from '@analogjs/vite-plugin-angular';
 import { resolve } from 'path';
 // import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   css: {
     preprocessorOptions: {
       scss: {
-        includePaths: ['src/assets/styles'],
+        includePaths: ['public/styles'],
       },
     },
   },
@@ -43,7 +44,7 @@ export default defineConfig(({ mode }) => ({
 
   plugins: [
     viteTsConfigPaths(),
-
+    nodePolyfills(),
     analog({
       ssr: false,
     }),

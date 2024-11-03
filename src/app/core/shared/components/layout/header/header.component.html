@@ -12,6 +12,26 @@
         class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-primary dark:focus:ring-blue-800">
         {{"Contact Us" | translate}}
       </button>
+      <button (click)="toggleTranslateUrl()" type="button"
+        class="bg-white text-primary hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-primary dark:focus:ring-blue-800">
+        {{isEn ? 'عربي' : 'English'}}
+      </button>
+      <button type="button" [matMenuTriggerFor]="citiesMenu"
+        class="flex items-center justify-center gap-1 bg-white text-primary hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-primary dark:focus:ring-blue-800">
+        <span>
+          {{ currentCityName }}
+        </span>
+        <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+
+      </button>
+      <mat-menu #citiesMenu="matMenu">
+        @for (city of cities; track city) {
+        <button mat-menu-item (click)="changeCity(city)">
+          {{ isEn? city.nameEn : city.nameAr}}
+        </button>
+        }
+
+      </mat-menu>
       <button data-collapse-toggle="navbar-sticky" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         aria-controls="navbar-sticky" aria-expanded="false">
