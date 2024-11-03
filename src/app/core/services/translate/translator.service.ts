@@ -48,7 +48,7 @@ export class TranslatorService {
     this.translate.use(val);
     this.translate.setDefaultLang(val);
     this.translate.currentLang = val;
-    // if (localStorage) localStorage.setItem('Lang', val);
+    if (localStorage) localStorage.setItem('Lang', val);
     if (val === 'ar') {
       // this.setLangagueQueryParam('ar');
       this.document.documentElement.setAttribute('dir', 'rtl');

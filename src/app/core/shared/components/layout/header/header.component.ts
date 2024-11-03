@@ -20,8 +20,8 @@ import { LocalStorageKeys } from '@app/core/constants/local_storage';
 export class HeaderComponent implements OnInit {
   get currentCityName(): string {
     return this.isEn
-      ? cities[this.currentCity].nameEn
-      : citiesAr[this.currentCity].nameAr;
+      ? cities[this.currentCity]?.nameEn
+      : citiesAr[this.currentCity]?.nameAr;
   }
   get currentCity(): string {
     return APP_SETTINGS.currentCity;
@@ -84,18 +84,20 @@ export class HeaderComponent implements OnInit {
     const currentLang = this.translatorService.getCurrentLang();
     const pathParts = currentPath.split('/');
     if (pathParts.length > 1) {
+      const cityParam = decodeURIComponent(pathParts[1]);
       if (currentLang === 'en') {
-        if (cities[pathParts[1]]) {
-          pathParts[1] = cities[pathParts[1]].slugAr;
+        if (cities[cityParam]) {
+          pathParts[1] = cities[cityParam].slugAr;
         }
       } else {
-        if (citiesAr[pathParts[1]]) {
-          pathParts[1] = citiesAr[pathParts[1]].slugEn;
+        if (citiesAr[cityParam]) {
+          pathParts[1] = citiesAr[cityParam].slugEn;
         }
       }
       if (pathParts[2]) {
+        const categorySlug = decodeURIComponent(pathParts[2]);
         const category = this.categories.find(
-          (s) => s.attributes.slug === pathParts[2]
+          (s) => s.attributes.slug === categorySlug
         );
         if (category) {
           if (currentLang === 'en') {
